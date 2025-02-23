@@ -296,6 +296,81 @@ h4 {
   background: rgba(39, 174, 96, 0.05);
 }
 
+/* Image Preview Styles */
+.image-preview {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.image-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.remove-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.remove-image:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Fade-In Animation */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fade-Out Animation */
+.fade-out {
+  animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
