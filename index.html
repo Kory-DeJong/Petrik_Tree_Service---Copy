@@ -48,46 +48,57 @@
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-      <div class="services-container">
-        <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <i class="fas fa-tree"></i>
-            <h3>Tree Removal</h3>
-            <p>Safe and efficient removal of trees of any size</p>
-            <button class="learn-more-btn" onclick="openModal('removal')">
-              Learn More
-            </button>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-cut"></i>
-            <h3>Tree Trimming</h3>
-            <p>Expert pruning and maintenance for healthy trees</p>
-            <button class="learn-more-btn" onclick="openModal('trimming')">
-              Learn More
-            </button>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-seedling"></i>
-            <h3>Stump Removal</h3>
-            <p>Complete stump grinding and removal services</p>
-            <button class="learn-more-btn" onclick="openModal('stump')">
-              Learn More
-            </button>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-bolt"></i>
-            <h3>Emergency Services</h3>
-            <p>24/7 emergency tree removal and storm damage cleanup</p>
-            <button class="learn-more-btn" onclick="openModal('emergency')">
-              Learn More
-            </button>
-          </div>
-        </div>
+    <<!-- Services Section -->
+<section class="services" id="services">
+  <div class="services-container">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-tree"></i>
+        <h3>Tree Removal</h3>
+        <p>Safe and efficient removal of trees of any size</p>
+        <button class="learn-more-btn" onclick="openModal('removal')">
+          Learn More
+        </button>
       </div>
-    </section>
+      <div class="service-card">
+        <i class="fas fa-cut"></i>
+        <h3>Tree Trimming</h3>
+        <p>Expert pruning and maintenance for healthy trees</p>
+        <button class="learn-more-btn" onclick="openModal('trimming')">
+          Learn More
+        </button>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-seedling"></i>
+        <h3>Stump Removal</h3>
+        <p>Complete stump grinding and removal services</p>
+        <button class="learn-more-btn" onclick="openModal('stump')">
+          Learn More
+        </button>
+      </div>
+      <!-- New Service Card -->
+      <div class="service-card">
+        <i class="fas fa-link"></i>
+        <h3>Tree Cabling and Bracing</h3>
+        <p>Structural support for weak or damaged trees</p>
+        <button class="learn-more-btn" onclick="openModal('cabling')">
+          Learn More
+        </button>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-bolt"></i>
+        <h3>Emergency Services</h3>
+        <p>24/7 emergency tree removal and storm damage cleanup</p>
+        <button class="learn-more-btn" onclick="openModal('emergency')">
+          Learn More
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -154,6 +165,28 @@
     </div>
   </div>
 </div>
+
+<!-- Modal for Tree Cabling and Bracing -->
+<div id="cabling-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('cabling')">&times;</span>
+    <div class="modal-body">
+      <h2>Tree Cabling and Bracing</h2>
+      <p>
+        Tree cabling and bracing provide structural support to weak or damaged trees, helping to prevent breakage and maintain their health and safety. Our experts use industry-standard techniques to secure your trees effectively.
+      </p>
+      <h3>Our Process:</h3>
+      <ul>
+        <li>**Tree Assessment**: We thoroughly inspect the tree to identify weak branches, structural risks, or potential failure points.</li>
+        <li>**Customized Plan**: We design a cabling and bracing solution tailored to the tree's specific needs and structural integrity.</li>
+        <li>**Installation**: Using high-quality cables and braces, we install supports to stabilize the tree and reduce stress on weak areas.</li>
+        <li>**Monitoring and Maintenance**: We provide ongoing monitoring and maintenance to ensure the tree remains stable and healthy over time.</li>
+        <li>**Safety Assurance**: We prioritize safety for you, your property, and the surrounding environment throughout the process.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
 <!-- Emergency Services Modal -->
 <div id="modal-emergency" class="modal">
