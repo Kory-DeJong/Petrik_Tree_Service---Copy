@@ -180,14 +180,18 @@ function createImagePreview(file, container) {
   }
 }
 
-// Form submission handler
+// Modified Form submission handler to work with FormSubmit
 function handleSubmit(event) {
   try {
-    event.preventDefault();
+    // Don't prevent default submission to allow FormSubmit to work
+    // event.preventDefault(); - REMOVED THIS LINE
 
-    const formData = new FormData(event.target);
-    uploadedFiles.forEach((file) => {
-      formData.append('images[]', file);
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Add uploaded files to the form data
+    uploadedFiles.forEach((file, index) => {
+      formData.append(`images_${index}`, file);
     });
 
     console.log('Form submission:');
@@ -195,28 +199,26 @@ function handleSubmit(event) {
       console.log(pair[0] + ': ' + pair[1]);
     }
 
+    // Show success message (will appear briefly before redirect)
     const successMessage = document.createElement('div');
     successMessage.className = 'success-message scale-in';
     successMessage.textContent =
       'Thank you for your inquiry. We will contact you soon!';
     document.body.appendChild(successMessage);
 
-    setTimeout(() => {
-      successMessage.classList.add('fade-out');
-      setTimeout(() => successMessage.remove(), 300);
-    }, 3000);
-
+    // Clear the image previews
     const previewContainer = document.getElementById('imagePreviewContainer');
     if (previewContainer) {
       previewContainer.innerHTML = '';
     }
     uploadedFiles.clear();
-    event.target.reset();
 
-    return false;
+    // Let the form submit naturally to FormSubmit
+    return true;
   } catch (error) {
     console.error('Error handling form submission:', error);
-    return false;
+    // Still allow form submission even if there's an error
+    return true;
   }
 }
 
@@ -276,6 +278,59 @@ function lazyLoadImages() {
   }
 }
 
+// Initialize drag and drop functionality
+function initializeDragAndDrop() {
+  try {
+    const dropArea = document.getElementById('dropArea');
+    if (!dropArea) return;
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      dropArea.addEventListener(
+        eventName,
+        () => {
+          dropArea.classList.add('highlight');
+        },
+        false
+      );
+    });
+
+    ['dragleave', 'drop'].forEach((eventName) => {
+      dropArea.addEventListener(
+        eventName,
+        () => {
+          dropArea.classList.remove('highlight');
+        },
+        false
+      );
+    });
+
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      const fileInput = document.getElementById('jobPhotos');
+
+      if (fileInput) {
+        fileInput.files = files;
+        const event = new Event('change');
+        fileInput.dispatchEvent(event);
+      }
+    }
+  } catch (error) {
+    console.error('Error initializing drag and drop:', error);
+  }
+}
+
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', () => {
   try {
@@ -294,6 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
         filterGallery(button.dataset.category);
       });
     });
+
+    // Initialize form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', handleSubmit);
+    }
 
     lazyLoadImages();
   } catch (error) {
