@@ -301,9 +301,9 @@
       </select>
     </div>
 
-    <!-- New Image Upload Section -->
+    <!-- Image Upload Section - Modified for FormSubmit compatibility -->
     <div class="form-group">
-      <div class="upload-box" onclick="document.getElementById('jobPhotos').click()">
+      <div id="dropArea" class="upload-box">
         <input
           type="file"
           id="jobPhotos"
@@ -311,13 +311,11 @@
           accept="image/*"
           multiple
           class="file-input"
-          onchange="handleFileSelect(event)"
-          style="display: none;"
         />
         <div class="upload-content">
           <i class="fas fa-cloud-upload-alt"></i>
           <p>Upload photos of the job (optional)</p>
-          <span class="file-info">Click to browse</span>
+          <span class="file-info">Click or drag files here</span>
         </div>
       </div>
       <!-- Container for Image Previews -->
@@ -338,8 +336,6 @@
     <button type="submit" class="cta-button">Get Free Quote</button>
   </form>
 </div>
-
-
 
 
 

@@ -180,25 +180,9 @@ function createImagePreview(file, container) {
   }
 }
 
-// Modified Form submission handler to work with FormSubmit
-function handleSubmit(event) {
+// Prepare form data before submission without interrupting the normal form process
+function prepareFormBeforeSubmit() {
   try {
-    // Don't prevent default submission to allow FormSubmit to work
-    // event.preventDefault(); - REMOVED THIS LINE
-
-    const form = event.target;
-    const formData = new FormData(form);
-
-    // Add uploaded files to the form data
-    uploadedFiles.forEach((file, index) => {
-      formData.append(`images_${index}`, file);
-    });
-
-    console.log('Form submission:');
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
-
     // Show success message (will appear briefly before redirect)
     const successMessage = document.createElement('div');
     successMessage.className = 'success-message scale-in';
@@ -213,12 +197,11 @@ function handleSubmit(event) {
     }
     uploadedFiles.clear();
 
-    // Let the form submit naturally to FormSubmit
+    // Let the form submit naturally
     return true;
   } catch (error) {
-    console.error('Error handling form submission:', error);
-    // Still allow form submission even if there's an error
-    return true;
+    console.error('Error preparing form:', error);
+    return true; // Still allow submission even if there's an error
   }
 }
 
@@ -350,10 +333,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Initialize form submission
+    // Initialize form submission without interfering with the native form submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      contactForm.addEventListener('submit', handleSubmit);
+      // Use onsubmit attribute instead of addEventListener
+      contactForm.onsubmit = prepareFormBeforeSubmit;
     }
 
     lazyLoadImages();
