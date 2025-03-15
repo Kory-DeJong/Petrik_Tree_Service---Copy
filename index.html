@@ -247,10 +247,21 @@
             </div>
           </div>
 
-          <!-- Contact Form -->
+<!-- Contact Form -->
 <div class="contact-form">
   <h3>Request a Free Quote</h3>
-  <form id="contactForm" onsubmit="return handleSubmit(event)" enctype="multipart/form-data">
+  <form id="contactForm" action="https://formsubmit.co/petriktreeservice@gmail.com" method="POST" enctype="multipart/form-data">
+    <!-- FormSubmit Configuration -->
+    <input type="hidden" name="_subject" value="New Tree Service Quote Request">
+    <input type="hidden" name="_next" value="thank-you.html">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="text" name="_honey" style="display:none">
+
+    <!-- Additional FormSubmit Customization -->
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_cc" value="korydejong@gmail.com">
+    <input type="hidden" name="_autoresponse" value="Thank you for your quote request! We'll get back to you as soon as possible. A member of our team will contact you shortly to discuss your tree service needs.">
+
     <div class="form-group">
       <input
         type="text"
@@ -291,39 +302,43 @@
     </div>
 
     <!-- New Image Upload Section -->
-<div class="form-group">
-  <div class="upload-box" onclick="document.getElementById('jobPhotos').click()">
-    <input
-      type="file"
-      id="jobPhotos"
-      name="jobPhotos"
-      accept="image/*"
-      multiple
-      class="file-input"
-      onchange="handleFileSelect(event)"
-      style="display: none;" <!-- Hide the file input -->
-    <div class="upload-content">
-      <i class="fas fa-cloud-upload-alt"></i>
-      <p>Upload photos of the job (optional)</p>
-      <span class="file-info">Click to browse</span>
+    <div class="form-group">
+      <div class="upload-box" onclick="document.getElementById('jobPhotos').click()">
+        <input
+          type="file"
+          id="jobPhotos"
+          name="jobPhotos"
+          accept="image/*"
+          multiple
+          class="file-input"
+          onchange="handleFileSelect(event)"
+          style="display: none;"
+        />
+        <div class="upload-content">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Upload photos of the job (optional)</p>
+          <span class="file-info">Click to browse</span>
+        </div>
+      </div>
+      <!-- Container for Image Previews -->
+      <div id="imagePreviewContainer" class="photo-preview"></div>
     </div>
-  </div>
-  <!-- Container for Image Previews -->
-  <div id="imagePreviewContainer" class="photo-preview"></div>
+
+    <!-- Description Textarea -->
+    <div class="form-group">
+      <textarea
+        id="message"
+        name="message"
+        required
+        placeholder="Please describe your tree service needs..."
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="cta-button">Get Free Quote</button>
+  </form>
 </div>
 
-<!-- Description Textarea -->
-<div class="form-group">
-  <textarea
-    id="message"
-    name="message"
-    required
-    placeholder="Please describe your tree service needs..."
-  ></textarea>
-</div>
-
-<!-- Submit Button -->
-<button type="submit" class="cta-button">Get Free Quote</button>
 
 
     </section>
